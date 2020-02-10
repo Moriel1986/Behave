@@ -3,12 +3,11 @@ import unittest
 import sys
 import time
 import HtmlTestRunner
-from Behave_Framework.pages.fb_login_page import FbLogin
-from Behave_Framework.Locators.locators import Locators
+from Behave_Framework.Pages.fb_login_page import FbLogin
 sys.path.append("/Users/user/PycharmProjects/Behave/Behave_Framework/Reports")
 
 
-class FbTest(unittest.TestCase):
+class FbTest(unittest.TestCase, FbLogin):
     baseURL = "http://wwww.facebook.com"
     username = "Demoriel24@comcast.net"
     password = "Kobelastgame60$"
@@ -24,8 +23,8 @@ class FbTest(unittest.TestCase):
         lp.set_username(self.username)
         lp.set_password(self.password)
         lp.click_login_button()
-        time.sleep(3)
-        self.assertEqual("Facebook", self.driver.title, "webpage title is not matching")
+        time.sleep(5)
+        self.assertEqual("Facebook_login", self.driver.title(), "webpage title is not matching")
 
     @classmethod
     def tearDown(cls):
@@ -33,5 +32,6 @@ class FbTest(unittest.TestCase):
         print(cls.driver.title, "Test Completed")
 
 
-if __name__ == '__main__':unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner
+if __name__ == '__main__':
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner
    (output='/Users/user/PycharmProjects/Behave/Behave_Framework/Reports'))
