@@ -1,14 +1,10 @@
-from selenium import webdriver
-import unittest
-import HtmlTestRunner
-from Behave_Framework.Locators.locators import Locators
 
 
 class FbLogin:
 
     username_xpath = "//input[@id='email']"
     password_xpath = "//input[@id='pass']"
-    click_login_id = 'u_0_2'
+    click_login_id = "//input[@id='u_0_4']"
 
     def __init__(self, driver):
         self.driver = driver
